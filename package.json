@@ -1,0 +1,8 @@
+{
+  "name": "mood_tracker",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "react-bootstrap": "^0.32.1"
+  }
+}
