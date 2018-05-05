@@ -54,7 +54,7 @@ class Records extends React.Component {
       })
   }
 
-  handleCreateSubmit(post){
+  handleCreateSubmit(record){
       fetch('/records', {
         method: 'POST',
         body: JSON.stringify(record),
@@ -109,9 +109,6 @@ class Records extends React.Component {
   render () {
     return (
       <div>
-        <h2>Records</h2>
-
-
         <RecordForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
             <RecordsList
             getRecords={this.getRecords}
