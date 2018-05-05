@@ -13,20 +13,6 @@ class RecordForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
-        if(this.props.record){
-            this.setState({
-                mood: this.props.record.mood,
-                food: this.props.record.food,
-                activity: this.props.record.activity,
-                foodwant: this.props.record.foodwant,
-                activitywant: this.props.record.activitywant,
-                grateful: this.props.record.grateful,
-                id: this.props.person.id
-            })
-        }
-    }
-
     handleChange(event){
       this.setState({[event.target.id]: event.target.value})
       console.log(event.target.id, this);
@@ -36,7 +22,16 @@ class RecordForm extends React.Component {
       event.preventDefault()
       console.log(this.state);
       this.props.handleSubmit(this.state)
-  }
+      this.setState({
+          mood: '',
+          food: '',
+          activity: '',
+          foodwant: '',
+          activitywant: '',
+          grateful: ''
+      })
+    }
+
 
 render () {
     return (
