@@ -37,13 +37,7 @@ render () {
     return (
         <div className="card-panel pink lighten-2">
             <h2> RecordForm Component</h2>
-            <h3>Navbar</h3>
-
         <div className="row">
-
-        <div className="card-panel grey  col s12 m4 l3">
-            <h1> sideNav </h1>
-        </div>
 
         <div className="col s12 m8 l9">
             <h1 className="center-align">How are you feeling today?</h1>

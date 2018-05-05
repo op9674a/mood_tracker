@@ -4,7 +4,15 @@ class RecordsList extends React.Component{
             <div>
                 {this.props.records.map((record, index) => {
                     return(
-                        <h3>{record.mood}</h3>
+                        <div>
+                        <h3> {record.mood} </h3>
+                        <p> {record.food} </p>
+                        <p> {record.foodwant} </p>
+                        <p> {record.activity} </p>
+                        <p> {record.activitywant} </p>
+                        <p> {record.grateful} </p>
+                        <a onClick = {() => this.props.deleteRecord(record, index)} className="waves-effect waves-light btn"><i className="material-icons right">cloud</i>Delete</a>
+                        </div>
                     )
                 })}
             </div>
