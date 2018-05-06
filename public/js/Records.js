@@ -63,7 +63,7 @@ class Records extends React.Component {
         return res.json()
     }).then(newRecord => {
         this.handleCreate(newRecord)
-        this.toggleState('showRecord', 'recordsList')
+        this.toggleState('recordForm', 'recordsList')
       }).catch(error => console.log(error))
     }
 
