@@ -47,8 +47,14 @@ render () {
 
         <div className="col s12 m8 l9">
             <h1 className="center-align">How are you feeling today?</h1>
-            <button>
-            > Help me figure out how I am feeling </button>
+
+
+            <div className="collapsible">
+
+                    <div className="collapsible-header"><i class="material-icons">filter_drama</i>Help me figure out how I am feeling</div>
+                    <div className="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+
+            </div>
 
         <div className="row">
             <form className="col s12" onSubmit={this.handleSubmit}>

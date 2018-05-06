@@ -1,0 +1,3 @@
+[submodule "kairos-api"]
+	path = kairos-api
+	url = git@github.com:kany/kairos-api.git
