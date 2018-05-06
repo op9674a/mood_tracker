@@ -47,6 +47,8 @@ render () {
 
         <div className="col s12 m8 l9">
             <h1 className="center-align">How are you feeling today?</h1>
+            <button>
+            > Help me figure out how I am feeling </button>
 
         <div className="row">
             <form className="col s12" onSubmit={this.handleSubmit}>

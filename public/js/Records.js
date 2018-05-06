@@ -6,6 +6,7 @@ class Records extends React.Component {
           recordForm: false,
           showRecord: false,
           editRecord: false,
+          showKairos: false,
           records: [],
           record: {}
       }
