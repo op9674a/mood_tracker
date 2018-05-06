@@ -79,7 +79,7 @@ class Records extends React.Component {
               return updateRecord.json()
           }).then(jsonedRecord => {
               this.getRecords()
-              this.toggleState('recordsList', 'showRecord')
+              this.toggleState('recordsList', 'editRecord')
           }).catch(error => console.log(error))
     }
 
@@ -116,19 +116,14 @@ class Records extends React.Component {
           getRecord= {this.getRecord}
           deleteRecord = {this.deleteRecord}/> : ''}
 
-        {this.state.recordForm ?
-            <RecordForm
-                toggleState={this.toggleState}
-                handleCreate = {this.handleCreate}
-                handleSubmit = {this.handleCreateSubmit}
-                /> : ''
-        }
+          {this.state.recordForm ?
+              <RecordForm
+                  toggleState={this.toggleState}
+                  handleCreate = {this.handleCreate}
+                  handleSubmit = {this.handleCreateSubmit}
+                  /> : ''
+          }
 
-        {this.state.showRecord ?
-            <Record
-            toggleState={this.toggleState}
-            record={this.state.record}
-            handleSubmit = {this.handleUpdateSubmit}/> : ''}
 
         {this.state.editRecord ?
             <EditRecordForm

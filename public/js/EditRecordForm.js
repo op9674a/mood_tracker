@@ -48,7 +48,7 @@ class EditRecordForm extends React.Component {
 render () {
     return (
         <div className="card-panel pink lighten-2">
-            <h2> RecordForm Component</h2>
+            <h2> EditRecordForm Component</h2>
         <div className="row">
 
         <div className="col s12 m8 l9">

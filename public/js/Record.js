@@ -14,11 +14,6 @@ class Record extends React.Component {
          <div>
            <button onClick={()=> this.props.toggleState('recordsList', 'showRecord')}>See All Records</button>
          </div>
-
-         <RecordForm
-            record={this.props.record}
-            handleSubmit={this.props.handleSubmit}
-            />
       </div>
     )
   }
