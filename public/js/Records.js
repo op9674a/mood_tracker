@@ -2,35 +2,32 @@ class Records extends React.Component {
   constructor(props){
       super(props)
       this.state = {
-          editRecord: null,
+          recordsList: true,
+          recordForm: false,
+          showRecord: false,
+          editRecord: false,
           records: [],
           record: {}
       }
+      this.toggleState = this.toggleState.bind(this);
+      this.deleteRecord=this.deleteRecord.bind(this);
       this.getRecords = this.getRecords.bind(this);
       this.getRecord = this.getRecord.bind(this);
       this.handleCreate = this.handleCreate.bind(this)
       this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
       this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
-      this.deleteRecord=this.deleteRecord.bind(this);
       this.closeEdit = this.closeEdit.bind(this)
-      this.toggleState = this.toggleState.bind(this);
   }
 
   componentDidMount(){
         this.getRecords()
   }
 
-  toggleState(index, post){
+  toggleState (st1, st2){
       this.setState({
-      editRecord: index,
-      record: record
-    })
-  }
-
-  closeEdit(x){
-    this.setState({
-        editRecord: x
-    })
+          [st1]: !this.state[st1],
+          [st2]: !this.state[st2]
+      })
   }
 
   getRecords(){
@@ -66,11 +63,11 @@ class Records extends React.Component {
         return res.json()
     }).then(newRecord => {
         this.handleCreate(newRecord)
-        this.getRecords()
+        this.toggleState('showRecord', 'recordsList')
       }).catch(error => console.log(error))
     }
 
-    handleUpdateSubmit (post, index){
+    handleUpdateSubmit (record, index){
           fetch('/records/' + record.id, {
               body: JSON.stringify(record),
               method: 'PUT',
@@ -78,15 +75,21 @@ class Records extends React.Component {
                   'Accept': 'application/json, text/plain, */*',
                   'Content-Type': 'application/json'
               }
-          }).then(updatedRecord => {
-              return updatedRecord.json()
-          }).then(jsonedPost => {
-              this.setState({editRecord: null})
+          }).then(updateRecord => {
+              return updateRecord.json()
+          }).then(jsonedRecord => {
               this.getRecords()
+              this.toggleState('recordsList', 'showRecord')
           }).catch(error => console.log(error))
     }
 
-  deleteRecord(record, index){
+    closeEdit(x){
+      this.setState({
+          editRecord: x
+      })
+    }
+
+    deleteRecord(record, index){
       fetch('records/' + record.id,
         {method: 'DELETE'}).then(data => {
             this.setState({
@@ -98,27 +101,46 @@ class Records extends React.Component {
         })
   }
 
-  toggleState (st1, st2){
-      this.setState({
-          [st1]: !this.state[st1],
-          [st2]: !this.state[st2]
-      })
-  }
-
-
   render () {
     return (
       <div>
-        <RecordForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit}/>
-            <RecordsList
-            getRecords={this.getRecords}
-            closeEdit = {this.closeEdit}
-            handleUpdateSubmit={this.handleUpdateSubmit}
-            record={this.state.record}
-            editRecord={this.state.editRecord}
+
+      {this.state.recordsList ? <button onClick = {() => this.toggleState('recordForm','recordsList')} className="waves-effect waves-light btn">
+      <i className="material-icons right">gesture</i>
+      How are you feeling today? </button> : ''}
+
+      {this.state.recordsList ?
+          <RecordsList
+          toggleState = {this.toggleState}
+          records = {this.state.records}
+          getRecord= {this.getRecord}
+          deleteRecord = {this.deleteRecord}/> : ''}
+
+        {this.state.recordForm ?
+            <RecordForm
+                toggleState={this.toggleState}
+                handleCreate = {this.handleCreate}
+                handleSubmit = {this.handleCreateSubmit}
+                /> : ''
+        }
+
+        {this.state.showRecord ?
+            <Record
             toggleState={this.toggleState}
+            record={this.state.record}
+            handleSubmit = {this.handleUpdateSubmit}/> : ''}
+
+        {this.state.editRecord ?
+            <EditRecordForm
+            toggleState={this.toggleState}
+            record={this.state.record}
             records={this.state.records}
-            deleteRecord={this.deleteRecord}/>
+            handleCreate = {this.handleCreate}
+            handleUpdateSubmit={this.handleUpdateSubmit}
+            handleSubmit={this.handleSubmit}
+            closeEdit={this.closeEdit}
+            editRecord={this.state.editRecord}/> : ''
+            }
     </div>
 
     )
