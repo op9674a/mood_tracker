@@ -13,6 +13,7 @@ class RecordsList extends React.Component{
                         <p> {record.activity} </p>
                         <p> {record.activitywant} </p>
                         <p> {record.grateful} </p>
+                        <p> {record.date} </p>
 
 
                         <a onClick = {() => this.props.deleteRecord(record, index)} className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>

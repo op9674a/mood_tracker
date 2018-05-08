@@ -7,7 +7,8 @@ class RecordForm extends React.Component {
             activity: '',
             foodwant: '',
             activitywant: '',
-            grateful: ''
+            grateful: '',
+            date: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,6 +23,7 @@ class RecordForm extends React.Component {
                 foodwant: this.props.record.foodwant,
                 activitywant: this.props.record.activitywant,
                 grateful: this.props.record.grateful,
+                date: this.props.record.date,
                 id: this.props.record.id
             })
         }
@@ -98,6 +100,15 @@ render () {
                         onChange={this.handleChange}
                         value={this.state.grateful}/>
                         <label for="grateful">What are you grateful for today?</label>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="input-field col s6">
+                        <input id="date" type="text" className="validate center-align"
+                        onChange={this.handleChange}
+                        value={this.state.date}/>
+                        <label for="date">What day is it?</label>
                     </div>
                 </div>
 

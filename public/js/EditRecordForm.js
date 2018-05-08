@@ -7,7 +7,8 @@ class EditRecordForm extends React.Component {
             activity: '',
             foodwant: '',
             activitywant: '',
-            grateful: ''
+            grateful: '',
+            date:''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,6 +22,7 @@ class EditRecordForm extends React.Component {
                 foodwant: this.props.record.foodwant,
                 activitywant: this.props.record.activitywant,
                 grateful: this.props.record.grateful,
+                date: this.props.record.date,
                 id: this.props.record.id
             })
     }
@@ -40,7 +42,8 @@ class EditRecordForm extends React.Component {
           activity: '',
           foodwant: '',
           activitywant: '',
-          grateful: ''
+          grateful: '',
+          date: ''
       })
     }
 
@@ -99,6 +102,14 @@ render () {
                         <input id="grateful" type="text" className="validate"
                         onChange={this.handleChange}
                         value={this.state.grateful}/>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="input-field col s6">
+                        <input id="date" type="text" className="validate"
+                        onChange={this.handleChange}
+                        value={this.state.date}/>
                     </div>
                 </div>
 
