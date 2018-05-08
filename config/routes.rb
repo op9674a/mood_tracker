@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   delete '/records/:id', to: 'records#delete'
   put '/records/:id', to: 'records#update'
 
+    root to: 'records#index'
 end

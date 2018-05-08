@@ -3,7 +3,8 @@ class App extends React.Component {
     return (
       <div>
         <Records />
-        </div>
+        <Chart />
+    </div>
     )
   }
 }

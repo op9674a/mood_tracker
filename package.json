@@ -2,7 +2,20 @@
   "name": "mood_tracker",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "3.5",
+    "babel-preset-react": "^6.24.1",
     "bootstrap": "^4.1.1",
-    "react-bootstrap": "^0.32.1"
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-chartjs-2": "^2.7.2",
+    "react-dom": "^16.3.2",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
   }
 }
