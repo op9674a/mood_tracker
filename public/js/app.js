@@ -1,10 +1,9 @@
-import Chart from './Chart.js';
 class App extends React.Component {
   render () {
     return (
       <div>
         <Records />
-        <Chart />
+        <Bar />
         </div>
     )
   }
