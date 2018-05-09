@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'browserify-rails', '~> 4.3.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'requirejs-rails', '~> 2.3.5'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

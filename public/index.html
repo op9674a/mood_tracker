@@ -6,11 +6,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js">
-        </script>
-
-        <script type="text/babel" src="js/Bar.js"></script>
+        <script type="text/babel" src="js/BarChart.js"></script>
         <script type="text/babel" src="js/Kairos.js"></script>
         <script type="text/babel" src="js/EditRecordForm.js"></script>
         <script type="text/babel" src="js/RecordForm.js"></script>
@@ -24,36 +24,17 @@
 
          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-          <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+
           <link rel="stylesheet" type="text/css" href="css/main.css">
 
     </head>
     <body>
         <main></main>
 
+
         <canvas id="myChart"></canvas>
-        <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-const chart = new Chart(ctx, {
-
-    type: 'line',
 
 
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "My First dataset",
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-        }]
-    },
-
-
-    options: {}
-});
-</script>
-         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     </body>
 </html>
