@@ -9,12 +9,21 @@ class RecordsList extends React.Component{
     }
 
     getChartRecords(){
-    fetch('/records')
-    .then((response)=>response.json())
-    .then((data)=>{
+        fetch('/records')
+        .then((response)=>response.json())
+        .then((data)=>{
         makeChart(data)
-    }).catch((error)=>console.log(error))
-}
+        }).catch((error)=>console.log(error))
+    }
+
+    removeData(myChart) {
+        myChart.data.labels.pop();
+        myChart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
+        myChart.update();
+    }
+
 
     render(){
         console.log(this);
@@ -33,7 +42,7 @@ class RecordsList extends React.Component{
                         <p> {record.grateful} </p>
                         <p> {record.date} </p>
 
-                        <a onClick = {() => this.props.deleteRecord(record, index)} className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>
+                        <a onClick = {() => {this.props.deleteRecord(record, index); this.props.removeData(myChart)} } className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>
 
                         <div>
 
@@ -48,14 +57,12 @@ class RecordsList extends React.Component{
 
 const makeChart = (data)=> {
     console.log(data);
+    //get Chart Element
     const ctx = document.getElementById("myChart");
-    //select unique moods es7 unique values form an array
-    //create second array to count instance of each unique to replace idNum
+    //map over record moods
     const recordMoodArr = data.map(record => record.mood)
     console.log(recordMoodArr);
-
-    // const idNum = data.map(record => record.id)
-    // console.log(idNum);
+    //count each instance of mood
     const wordFreq = arr => {
         let wordCount = {};
         const freqMoodArr = arr.toString().toLowerCase().split(",")
@@ -68,30 +75,33 @@ const makeChart = (data)=> {
                 wordCount[word]++;
             }
             console.log(wordCount);
-  }) // closes forEach function
+        }) // closes forEach function
     return wordCount;
 }
 
 wordFreq(recordMoodArr)
 
-const moodObjArr = [wordFreq(recordMoodArr)]
-console.log(moodObjArr);
-const moodVal= Object.values(moodObjArr[0])
+//store count of each instance of mood
+const moodArrObj = [wordFreq(recordMoodArr)]
+console.log(moodArrObj);
+//grab count of each instance of mood
+//https://stackoverflow.com/questions/7391362/retrieving-keys-from-json-array-key-value-pair-dynamically-javascript
+const moodVal= Object.values(moodArrObj[0])
 console.log(moodVal);
-
-
-
+//remove duplicates from moods for chart labels
+//https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+const dup = [...new Set(recordMoodArr)];
+console.log(dup);
+console.log(dup.length);
 
     myChart = new Chart(ctx, {
     type: "bar",
     data: {
-        labels: recordMoodArr,
+        labels: dup,
         datasets: [{
             label: 'All Moods',
             data: moodVal,
-            backgroundColor: [
-                'red','pink','blue','green','purple','orange'
-            ]
+            backgroundColor:["#F7AEF8", "#B388EB", "#8093F1", "#72DDF7","#DE369D", "#FFDDE2", "#1DD3B0", "#BDADEA"]
         }]
     },
     options: {
@@ -101,7 +111,9 @@ console.log(moodVal);
                     beginAtZero:true
                 }
             }]
-        }
+        },
+        events:["click"]
     }
 });
+myChart.update()
 }
