@@ -16,13 +16,6 @@ class RecordsList extends React.Component{
         }).catch((error)=>console.log(error))
     }
 
-    removeData(myChart) {
-        myChart.data.labels.pop();
-        myChart.data.datasets.forEach((dataset) => {
-            dataset.data.pop();
-        });
-        myChart.update();
-    }
 
 
     render(){
@@ -42,7 +35,7 @@ class RecordsList extends React.Component{
                         <p> {record.grateful} </p>
                         <p> {record.date} </p>
 
-                        <a onClick = {() => {this.props.deleteRecord(record, index); this.props.removeData(myChart)} } className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>
+                        <a onClick = {() => this.props.deleteRecord(record, index)} className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>
 
                         <div>
 
@@ -81,39 +74,38 @@ const makeChart = (data)=> {
 
 wordFreq(recordMoodArr)
 
-//store count of each instance of mood
-const moodArrObj = [wordFreq(recordMoodArr)]
-console.log(moodArrObj);
-//grab count of each instance of mood
-//https://stackoverflow.com/questions/7391362/retrieving-keys-from-json-array-key-value-pair-dynamically-javascript
-const moodVal= Object.values(moodArrObj[0])
-console.log(moodVal);
-//remove duplicates from moods for chart labels
-//https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
-const dup = [...new Set(recordMoodArr)];
-console.log(dup);
-console.log(dup.length);
+    //store count of each instance of mood
+    const moodArrObj = [wordFreq(recordMoodArr)]
+    console.log(moodArrObj);
+    //grab count of each instance of mood
+    //https://stackoverflow.com/questions/7391362/retrieving-keys-from-json-array-key-value-pair-dynamically-javascript
+    const moodVal= Object.values(moodArrObj[0])
+    console.log(moodVal);
+    //remove duplicates from moods for chart labels
+    //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
+    const dup = [...new Set(recordMoodArr)];
+    console.log(dup);
+    console.log(dup.length);
 
-    myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: dup,
-        datasets: [{
-            label: 'All Moods',
-            data: moodVal,
-            backgroundColor:["#F7AEF8", "#B388EB", "#8093F1", "#72DDF7","#DE369D", "#FFDDE2", "#1DD3B0", "#BDADEA"]
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
+        myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: dup,
+            datasets: [{
+                label: 'All Moods',
+                data: moodVal,
+                backgroundColor:["#F7AEF8", "#B388EB", "#8093F1", "#72DDF7","#DE369D", "#FFDDE2", "#1DD3B0", "#BDADEA", "#B6C2D9", "#709775", "#60E1E0", "#4C0827", "#DB7F8E"]
             }]
         },
-        events:["click"]
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            },  events: ['click']
+        }
+    });
+    myChart.update()
     }
-});
-myChart.update()
-}
