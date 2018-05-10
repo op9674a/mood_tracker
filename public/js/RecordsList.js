@@ -79,3 +79,37 @@ const makeChart = (data)=> {
     }
 });
 }
+
+const updateChart  = (data)=> {
+    console.log(data);
+    const ctx = document.getElementById("myChart");
+    //select unique moods es7 unique values form an array
+    //create second array to count instance of each unique to replace idNum
+    const moodArrays = data.map(record => record.mood)
+    console.log(moodArrays);
+    const idNum = data.map(record => record.id)
+    console.log(idNum);
+    myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: moodArrays,
+        datasets: [{
+            label: 'All Moods',
+            data: idNum,
+            backgroundColor: [
+                'red','pink','blue','green','purple','orange'
+            ]
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+ chart.update();
+}
