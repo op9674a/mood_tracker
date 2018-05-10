@@ -51,16 +51,16 @@ const makeChart = (data)=> {
     const ctx = document.getElementById("myChart");
     //select unique moods es7 unique values form an array
     //create second array to count instance of each unique to replace idNum
-    const moodArrays = data.map(record => record.mood)
-    console.log(moodArrays);
+    const recordMoodArr = data.map(record => record.mood)
+    console.log(recordMoodArr);
 
     // const idNum = data.map(record => record.id)
     // console.log(idNum);
     const wordFreq = arr => {
         let wordCount = {};
-        const newMoodArr = arr.toString().toLowerCase().split(",")
-        console.log(newMoodArr);
-        const moodNum = newMoodArr.forEach( word => {
+        const freqMoodArr = arr.toString().toLowerCase().split(",")
+        console.log(freqMoodArr);
+        const moodNum = freqMoodArr.forEach( word => {
             // if the word doesn't exist in our object
             if (!wordCount[word]){
                 wordCount[word] = 1;
@@ -72,22 +72,23 @@ const makeChart = (data)=> {
     return wordCount;
 }
 
-wordFreq(moodArrays)
+wordFreq(recordMoodArr)
 
-const moodVal = wordFreq(moodArrays)
-
-const map = new Map ();
-map.set(moodVal);
+const moodObjArr = [wordFreq(recordMoodArr)]
+console.log(moodObjArr);
+const moodVal= Object.values(moodObjArr[0])
 console.log(moodVal);
+
+
 
 
     myChart = new Chart(ctx, {
     type: "bar",
     data: {
-        labels: moodArrays,
+        labels: recordMoodArr,
         datasets: [{
             label: 'All Moods',
-            data: wordFreq,
+            data: moodVal,
             backgroundColor: [
                 'red','pink','blue','green','purple','orange'
             ]
