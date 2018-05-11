@@ -1,5 +1,7 @@
-Rails.application.routes.draw do 
+Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/users', to: 'users#index'
   resources :users do
       collection do
         post '/login', to: 'users#login'
@@ -11,5 +13,6 @@ Rails.application.routes.draw do
   post '/records', to: 'records#create'
   delete '/records/:id', to: 'records#delete'
   put '/records/:id', to: 'records#update'
+
 
 end

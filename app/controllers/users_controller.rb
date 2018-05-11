@@ -1,13 +1,19 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_token, except: [:login, :create]
+  before_action :authorize_user, except: [:login, :create, :index]
+
+# LOGIN
   def login
-  user = User.find_by(username: params[:user][:username])
-  if user && user.authenticate(params[:user][:password])
-    render json: {status: 200, user: user}
+      user = User.find_by(username: params[:user][:username])
+      if user && user.authenticate(params[:user][:password])
+        token = create_token(user.id, user.username)
+         render json: {status: 200, token: token, user: user}
   else
     render json: {status: 401, message: "Unauthorized"}
   end
 end
+
   # GET /users
   # GET /users.json
   def index
@@ -17,8 +23,15 @@ end
   # GET /users/1
   # GET /users/1.json
   def show
+      render json: get_current_user
   end
 
+  def authorize_user
+      puts "AUTHORIZE USER"
+      puts "user id: #{get_current_user.id}"
+      puts "params: #{params[:id]}"
+      render json: {status: 401, message: "Unauthorized"} unless get_current_user.id == params[:id].to_i
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -69,6 +82,23 @@ end
   end
 
   private
+
+    def create_token(id, username)
+        JWT.encode(payload(id, username), ENV['JWT_SECRET'], 'HS256')
+    end
+
+
+    def payload(id, username)
+        {
+          exp: (Time.now + 30.minutes).to_i,
+          iat: Time.now.to_i,
+          iss: ENV['JWT_ISSUER'],
+          user: {
+            id: id,
+            username: username
+          }
+        }
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
