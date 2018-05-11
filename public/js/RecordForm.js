@@ -45,6 +45,9 @@ render () {
     return (
         <div className="card-panel teal lighten-2">
             <h2> RecordForm Component</h2>
+
+            <button onClick = {() => this.props.toggleState('recordsList','recordForm')} className="waves-effect waves-light btn">
+            Back to all Records</button>
         <div className="row">
 
         <div className="col s12 m8 l9">
@@ -101,9 +104,7 @@ render () {
                         value={this.state.grateful}/>
                         <label for="grateful">What are you grateful for today?</label>
                     </div>
-                </div>
 
-                <div className="row">
                     <div className="input-field col s6">
                         <input id="date" type="text" className="validate center-align"
                         onChange={this.handleChange}
@@ -111,6 +112,7 @@ render () {
                         <label for="date">What day is it?</label>
                     </div>
                 </div>
+
 
                 <div className="row">
                     <div className="input-field col">

@@ -21,26 +21,54 @@ class RecordsList extends React.Component{
     render(){
         console.log(this);
         return(
-            <div>
-                {this.props.records.map((record, index) => {
-                    return(
-                        <div>
-                        <h3 onClick={() => {this.props.toggleState('recordsList','editRecord');
-                            this.props.getRecord(record)}}>
-                            {record.mood} </h3>
-                        <p> {record.food} </p>
-                        <p> {record.foodwant} </p>
-                        <p> {record.activity} </p>
-                        <p> {record.activitywant} </p>
-                        <p> {record.grateful} </p>
-                        <p> {record.date} </p>
+            <div className="cards-container">
+             {this.props.records.map((record, index) => {
+                return(
+                    <div className="row">
 
-                        <a onClick = {() => this.props.deleteRecord(record, index)} className="waves-effect waves-light btn"><i className="material-icons right">clear</i>Delete</a>
+                            <div className="card small">
+                                <div className="card-content">
+                                    <span className="card-title center">I feel...{record.mood}</span>
+                                        <div className="row center">
+                                            <div className="col">
+                                                    <p> I ate {record.food} </p>
+                                            </div>
+                                            <div className="col">
+                                                    <p> I wanted {record.foodwant} </p>
+                                            </div>
+                                        </div>
 
-                        <div>
+                                        <div className="row center">
+                                            <div className="col">
+                                                <p> I {record.activity} </p>
+                                            </div>
+                                            <div className="col">
+                                                <p> I {record.activitywant} </p>
+                                            </div>
+                                        </div>
 
-                        </div>
-                        </div>
+                                        <div className="row center">
+                                            <div className="col">
+                                                <p> I am grateful for {record.grateful} </p>
+                                            </div>
+                                            <div className="col">
+                                                <p> {record.date} </p>
+                                            </div>
+                                        </div>
+                                </div>
+
+                                <div className="card-action">
+                                    <span><a onClick={() => {this.props.toggleState('recordsList','editRecord');
+                                    this.props.getRecord(record)}}
+                                    className="btn-floating btn-large waves-effect waves-light btn-small teal">
+                                    <i className="material-icons">edit</i></a></span>
+                                    <span><a onClick = {() => this.props.deleteRecord(record, index)} className="btn-floating btn-large waves-effect waves-light btn-small teal"><i className="material-icons">delete</i>Delete</a></span>
+                               </div>
+                            </div>
+                
+                   </div>
+
+
                     )
                 })}
             </div>

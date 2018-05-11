@@ -62,7 +62,7 @@ render () {
             onSubmit={this.handleSubmit}>
                 <div className="row">
                     <div className="input-field col s12">
-                        <input  id="mood" type="text" placeholder="Mood"
+                        Mood:<input  id="mood" type="text" placeholder="Mood"
                             className="validate center-align"
                             onChange={this.handleChange}
                             value={this.state.mood}/>
@@ -71,13 +71,13 @@ render () {
 
                 <div className="row">
                     <div className="input-field col s6">
-                        <input id="food" type="text" className="validate"
+                        What did you eat today?<input id="food" type="text" className="validate"
                             onChange={this.handleChange}
                             value={this.state.food}/>
                     </div>
 
                     <div className="input-field col s6">
-                        <input id="foodwant" type="text" className="validate"
+                        What did you want to eat today?<input id="foodwant" type="text" className="validate"
                             onChange={this.handleChange}
                             value={this.state.foodwant}/>
                     </div>
@@ -85,13 +85,13 @@ render () {
 
                 <div className="row">
                     <div className="input-field col s6">
-                        <input id="activity" type="text" className="validate"
+                        What did you do today?<input id="activity" type="text" className="validate"
                             onChange={this.handleChange}
                             value={this.state.activity}/>
                     </div>
 
                     <div className="input-field col s6">
-                        <input id="activitywant" type="text" className="validate"
+                        What did you want to do today?<input id="activitywant" type="text" className="validate"
                             onChange={this.handleChange}
                             value={this.state.activitywant}/>
                     </div>
@@ -99,15 +99,13 @@ render () {
 
                 <div className="row">
                     <div className="input-field col s6">
-                        <input id="grateful" type="text" className="validate"
+                        What are you grateful for today?<input id="grateful" type="text" className="validate"
                         onChange={this.handleChange}
                         value={this.state.grateful}/>
                     </div>
-                </div>
 
-                <div className="row">
                     <div className="input-field col s6">
-                        <input id="date" type="text" className="validate"
+                        What day is it?<input id="date" type="text" className="validate"
                         onChange={this.handleChange}
                         value={this.state.date}/>
                     </div>

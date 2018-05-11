@@ -17,7 +17,6 @@ class Records extends React.Component {
       this.handleCreate = this.handleCreate.bind(this)
       this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
       this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this)
-      this.closeEdit = this.closeEdit.bind(this)
   }
 
   componentDidMount(){
@@ -84,12 +83,6 @@ class Records extends React.Component {
           }).catch(error => console.log(error))
     }
 
-    closeEdit(x){
-      this.setState({
-          editRecord: x
-      })
-    }
-
     deleteRecord(record, index){
       fetch('records/' + record.id,
         {method: 'DELETE'}).then(data => {
@@ -106,9 +99,19 @@ class Records extends React.Component {
     return (
       <div>
 
+
+
       {this.state.recordsList ? <button onClick = {() => this.toggleState('recordForm','recordsList')} className="waves-effect waves-light btn">
       <i className="material-icons right">gesture</i>
       How are you feeling today? </button> : ''}
+
+
+
+
+
+
+
+
 
       {this.state.recordsList ?
           <RecordsList
@@ -134,7 +137,6 @@ class Records extends React.Component {
             handleCreate = {this.handleCreate}
             handleUpdateSubmit={this.handleUpdateSubmit}
             handleSubmit={this.handleSubmit}
-            closeEdit={this.closeEdit}
             editRecord={this.state.editRecord}/> : ''
             }
     </div>
