@@ -109,6 +109,7 @@ class Records extends React.Component {
                 .then((response) => response.json())
                 .then((data) => {
                     makeChart(data)
+                    timeChart(data)
                 }).catch((error) => console.log(error))
         }
 

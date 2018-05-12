@@ -27,8 +27,7 @@ nav {
 }
 
 #recordForm {
-    display: block;
-    margin: 0 auto;
+    margin-left: 12%;
 }
 
 .cards-container {

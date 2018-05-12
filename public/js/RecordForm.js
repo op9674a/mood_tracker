@@ -45,14 +45,12 @@ class RecordForm extends React.Component {
 
     render() {
         return ( <
-            div >
-            <
             div className = "row center-align" >
-
             <
-            div className = "col s12 m8 l9" >
+            div id = "recordForm"
+            className = "col s12 m8 l9" >
             <
-            h1 className = "center-align" > How are you feeling today ? < /h1> <
+            h1 className = "formhi" > How are you feeling today ? < /h1> <
             button className = "waves-effect waves-light btn" >
             >
             Let me meditate on it < /button>
@@ -60,8 +58,7 @@ class RecordForm extends React.Component {
             <
             div className = "row" >
             <
-            form id = "recordForm"
-            className = "col s12"
+            form className = "col s12"
             onSubmit = {
                 this.handleSubmit
             } >
@@ -217,9 +214,6 @@ class RecordForm extends React.Component {
             /form> < /
             div > <
             /div> < /
-            div >
-            <
-            /
             div >
         )
     }
