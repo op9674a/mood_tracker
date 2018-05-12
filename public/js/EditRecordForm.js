@@ -49,19 +49,14 @@ class EditRecordForm extends React.Component {
         })
     }
 
-
     render() {
         return ( <
-            div >
-            <
-            div className = "row" >
+            div className = "row center-align" >
             <
             div id = "editForm"
             className = "col s12 m8 l9" >
             <
-            h1 className = "center-align" > How are you feeling today ? < /h1>
-
-            <
+            h1 className = "center-align" > How are you feeling today ? < /h1> <
             div className = "row" >
             <
             form className = "col s12"
@@ -82,7 +77,7 @@ class EditRecordForm extends React.Component {
             value = {
                 this.state.mood
             }
-            /> < /
+            / > < /
             div > <
             /div>
 
@@ -92,7 +87,7 @@ class EditRecordForm extends React.Component {
             div className = "input-field col s6" >
             What did you eat today ? < input id = "food"
             type = "text"
-            className = "validate"
+            required className = "validate"
             onChange = {
                 this.handleChange
             }
@@ -106,7 +101,7 @@ class EditRecordForm extends React.Component {
             div className = "input-field col s6" >
             What did you want to eat today ? < input id = "foodwant"
             type = "text"
-            className = "validate"
+            required className = "validate"
             onChange = {
                 this.handleChange
             }
@@ -123,7 +118,7 @@ class EditRecordForm extends React.Component {
             div className = "input-field col s6" >
             What did you do today ? < input id = "activity"
             type = "text"
-            className = "validate"
+            required className = "validate"
             onChange = {
                 this.handleChange
             }
@@ -137,7 +132,7 @@ class EditRecordForm extends React.Component {
             div className = "input-field col s6" >
             What did you want to do today ? < input id = "activitywant"
             type = "text"
-            className = "validate"
+            required className = "validate"
             onChange = {
                 this.handleChange
             }
@@ -154,7 +149,7 @@ class EditRecordForm extends React.Component {
             div className = "input-field col s6" >
             What are you grateful
             for today ? < input id = "grateful"
-            type = "text"
+            required type = "text"
             className = "validate"
             onChange = {
                 this.handleChange
@@ -168,7 +163,7 @@ class EditRecordForm extends React.Component {
             <
             div className = "input-field col s6" >
             What day is it ? < input id = "date"
-            type = "text"
+            required type = "text"
             className = "validate"
             onChange = {
                 this.handleChange
@@ -203,8 +198,7 @@ class EditRecordForm extends React.Component {
             Back to all Records < /button> < /
             div > <
             /div> < /
-            div > <
-            /div>
+            div >
         )
     }
 }

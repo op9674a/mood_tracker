@@ -2,12 +2,10 @@ class Records extends React.Component {
         constructor(props) {
             super(props)
             this.state = {
-                greeting: true,
-                recordsList: false,
+                recordsList: true,
                 recordForm: false,
                 showRecord: false,
                 editRecord: false,
-                showKairos: false,
                 records: [],
                 record: {}
             }
@@ -67,7 +65,8 @@ class Records extends React.Component {
                 return res.json()
             }).then(newRecord => {
                 this.handleCreate(newRecord)
-                this.toggleState('recordForm', 'recordsList')
+                this.getRecords()
+                this.toggleState('recordsList', 'recordForm')
             }).catch(error => console.log(error))
         }
 
@@ -118,29 +117,14 @@ class Records extends React.Component {
                     div >
 
                     {
-                        this.state.greeting ? < button onClick = {
-                            () => this.toggleState('recordForm', 'greeting')
-                        }
-                        className = "btn large scale-transition"
-                        id = "greeting" >
-                        <
-                        i className = "material-icons right" > playlist_add < /i>
-                        How are you feeling today ? < /button> :
-                        ''
-                    }
-
-
-                    {
                         this.state.recordsList ? < button onClick = {
                             () => this.toggleState('recordForm', 'recordsList')
                         }
                         className = "waves-effect waves-light btn"
                         id = "greeting" >
-                            <
-                            i className = "material-icons right" > gesture < /i>
+                        <
+                        i className = "material-icons right" > gesture < /i>
                         Add an entry < /button> : ''}
-
-
 
                         {
                             this.state.recordsList ?

@@ -53,9 +53,7 @@ class RecordForm extends React.Component {
             h1 className = "formhi" > How are you feeling today ? < /h1> <
             button className = "waves-effect waves-light btn" >
             >
-            Let me meditate on it < /button>
-
-            <
+            Let me meditate on it < /button> <
             div className = "row" >
             <
             form className = "col s12"
@@ -68,7 +66,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s12" >
             <
             input id = "mood"
-            require type = "text"
+            required type = "text"
             placeholder = "Mood"
             className = "validate center-align"
             onChange = {
@@ -87,7 +85,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "food"
-            type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -102,7 +100,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "foodwant"
-            require type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -122,7 +120,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "activity"
-            require type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -139,7 +137,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "activitywant"
-            require type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -159,7 +157,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "grateful"
-            require type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -177,7 +175,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "date"
-            require type = "text"
+            required type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -189,10 +187,7 @@ class RecordForm extends React.Component {
             label
             for = "date" > What day is it ? < /label> < /
             div > <
-            /div>
-
-
-            <
+            /div> <
             div className = "row" >
             <
             div className = "input-field col" >
