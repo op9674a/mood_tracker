@@ -52,13 +52,12 @@ class EditRecordForm extends React.Component {
 
     render() {
         return ( <
-            div className = "card-panel" >
+            div >
             <
-            h2 > EditRecordForm Component < /h2> <
             div className = "row" >
-
             <
-            div className = "col s12 m8 l9" >
+            div id = "editForm"
+            className = "col s12 m8 l9" >
             <
             h1 className = "center-align" > How are you feeling today ? < /h1>
 

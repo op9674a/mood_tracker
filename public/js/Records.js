@@ -109,7 +109,6 @@ class Records extends React.Component {
                 .then((response) => response.json())
                 .then((data) => {
                     makeChart(data)
-                    timeChart(data)
                 }).catch((error) => console.log(error))
         }
 
@@ -129,7 +128,6 @@ class Records extends React.Component {
                         How are you feeling today ? < /button> :
                         ''
                     }
-
 
 
                     {
@@ -269,7 +267,7 @@ class Records extends React.Component {
                                     }
                                 }]
                             },
-                            events: ['click']
+                            events: ["click"]
                         }
                     });
                     myChart.update()

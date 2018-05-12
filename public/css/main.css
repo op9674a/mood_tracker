@@ -13,10 +13,15 @@ nav {
 .btn, button {
     background: #0b0662;
     color: white;
+    padding: 1px;
 }
 
 .btn:hover {
     background: #aca1ff
+}
+
+#see-all {
+    margin-left: 5px;
 }
 
 #greeting, #graph {
@@ -24,9 +29,10 @@ nav {
     margin: 0 auto;
     margin-top: 50px;
     color: white;
+    margin-bottom: 150px;
 }
 
-#recordForm {
+#recordForm, #editForm {
     margin-left: 12%;
 }
 

@@ -68,7 +68,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s12" >
             <
             input id = "mood"
-            type = "text"
+            require type = "text"
             placeholder = "Mood"
             className = "validate center-align"
             onChange = {
@@ -102,7 +102,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "foodwant"
-            type = "text"
+            require type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -122,7 +122,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "activity"
-            type = "text"
+            require type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -139,7 +139,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "activitywant"
-            type = "text"
+            require type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -159,7 +159,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "grateful"
-            type = "text"
+            require type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -177,7 +177,7 @@ class RecordForm extends React.Component {
             div className = "input-field col s6" >
             <
             input id = "date"
-            type = "text"
+            require type = "text"
             className = "validate center-align"
             onChange = {
                 this.handleChange
@@ -207,7 +207,8 @@ class RecordForm extends React.Component {
             onClick = {
                 () => this.props.toggleState('recordsList', 'recordForm')
             }
-            className = "waves-effect waves-light btn" >
+            className = "waves-effect waves-light btn"
+            id = "see-all" >
             Back to all Records < /a>< /
             div > < /
             div > <
