@@ -1,6 +1,6 @@
 class Record
 
-    attr_reader :id, :mood, :activity, :food, :activitywant, :foodwant, :grateful
+    attr_reader :id, :mood, :activity, :food, :activitywant, :foodwant, :grateful, :date
 
     DB = PG.connect(host: 'localhost', port: 5432, dbname: 'mood_tracker_development')
 
@@ -12,6 +12,7 @@ class Record
         @activitywant = opts["activitywant"]
         @foodwant = opts["foodwant"]
         @grateful = opts["grateful"]
+        @date = opts["date"]
     end
 
     def self.all
@@ -27,14 +28,16 @@ class Record
     def self.create(opts)
         results = DB.exec(
             <<-SQL
-                INSERT INTO records (mood, activity, food, activitywant, foodwant, grateful)
+                INSERT INTO records (mood, activity, food, activitywant, foodwant, grateful, date)
                 VALUES ( '#{opts["mood"]}',
                          '#{opts["activity"]}',
                          '#{opts["food"]}',
                          '#{opts["activitywant"]}',
                          '#{opts["foodwant"]}',
-                         '#{opts["grateful"]}')
-                RETURNING id, mood, activity, food, activitywant, foodwant, grateful;
+                         '#{opts["grateful"]}',
+                         '#{opts["date"]}'
+                     )
+                RETURNING id, mood, activity, food, activitywant, foodwant, grateful, date;
                 SQL
             )
             return Record.new(results.first)
@@ -55,9 +58,10 @@ class Record
                  food='#{opts["food"]}',
                  activitywant='#{opts["activitywant"]}',
                  foodwant='#{opts["foodwant"]}',
-                 grateful='#{opts["grateful"]}'
+                 grateful='#{opts["grateful"]}',
+                 date='#{opts["date"]}'
                 WHERE id=#{id}
-                RETURNING id, mood, activity, food, activitywant, foodwant, grateful;
+                RETURNING id, mood, activity, food, activitywant, foodwant, grateful, date;
             SQL
         )
         return Record.new(results.first)

@@ -3,6 +3,16 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
-    "react-bootstrap": "^0.32.1"
+    "chart.js": "^2.7.2",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "react": "^16.3.2",
+    "react-bootstrap": "^0.32.1",
+    "react-chartjs-2": "^2.7.2",
+    "react-dom": "^16.3.2",
+    "react-easy-chart": "^1.0.0",
+    "react-faux-dom": "^4.1.0",
+    "requirejs": "^2.3.5",
+    "uniq": "^1.0.1"
   }
 }
