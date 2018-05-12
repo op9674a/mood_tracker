@@ -1,5 +1,5 @@
 class RecordForm extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             mood: '',
@@ -14,8 +14,8 @@ class RecordForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
-        if(this.props.record){
+    componentDidMount() {
+        if (this.props.record) {
             this.setState({
                 mood: this.props.record.mood,
                 food: this.props.record.food,
@@ -29,103 +29,198 @@ class RecordForm extends React.Component {
         }
     }
 
-    handleChange(event){
-      this.setState({[event.target.id]: event.target.value})
-      console.log(event.target.id, this);
+    handleChange(event) {
+        this.setState({
+            [event.target.id]: event.target.value
+        })
+        console.log(event.target.id, this);
     }
 
-    handleSubmit (event){
-      event.preventDefault()
-      console.log(this.state);
-      this.props.handleSubmit(this.state)
+    handleSubmit(event) {
+        event.preventDefault()
+        console.log(this.state);
+        this.props.handleSubmit(this.state)
     }
 
 
-render () {
-    return (
-        <div className="card-panel teal lighten-2">
-            <h2> RecordForm Component</h2>
+    render() {
+        return ( <
+            div >
+            <
+            div className = "row center-align" >
 
-            <button onClick = {() => this.props.toggleState('recordsList','recordForm')} className="waves-effect waves-light btn">
-            Back to all Records</button>
-        <div className="row">
+            <
+            div className = "col s12 m8 l9" >
+            <
+            h1 className = "center-align" > How are you feeling today ? < /h1> <
+            button className = "waves-effect waves-light btn" >
+            >
+            Let me meditate on it < /button>
 
-        <div className="col s12 m8 l9">
-            <h1 className="center-align">How are you feeling today?</h1>
-            <button>
-            > Help me figure out how I am feeling </button>
+            <
+            div className = "row" >
+            <
+            form id = "recordForm"
+            className = "col s12"
+            onSubmit = {
+                this.handleSubmit
+            } >
+            <
+            div className = "row" >
+            <
+            div className = "input-field col s12" >
+            <
+            input id = "mood"
+            type = "text"
+            placeholder = "Mood"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.mood
+            }
+            /> < /
+            div > <
+            /div>
 
-        <div className="row">
-            <form className="col s12" onSubmit={this.handleSubmit}>
-                <div className="row">
-                    <div className="input-field col s12">
-                        <input  id="mood" type="text" placeholder="Mood"
-                            className="validate center-align"
-                            onChange={this.handleChange}
-                            value={this.state.mood}/>
-                    </div>
-                </div>
+            <
+            div className = "row" >
+            <
+            div className = "input-field col s6" >
+            <
+            input id = "food"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.food
+            }
+            /> <
+            label
+            for = "food" > What did you eat today ? < /label> < /
+            div > <
+            div className = "input-field col s6" >
+            <
+            input id = "foodwant"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.foodwant
+            }
+            /> <
+            label
+            for = "foodwant" > What did you want to eat today ? < /label> < /
+            div > <
+            /div>
 
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="food" type="text" className="validate center-align"
-                            onChange={this.handleChange}
-                            value={this.state.food}/>
-                        <label for="food">What did you eat today?</label>
-                    </div>
-                    <div className="input-field col s6">
-                        <input id="foodwant" type="text" className="validate center-align"
-                            onChange={this.handleChange}
-                            value={this.state.foodwant}/>
-                        <label for="foodwant">What did you want to eat today?</label>
-                    </div>
-                    </div>
+            <
+            div className = "row" >
+            <
+            div className = "input-field col s6" >
+            <
+            input id = "activity"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.activity
+            }
+            /> <
+            label
+            for = "activity" > What did you do today ? < /label> < /
+            div >
 
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="activity" type="text" className="validate center-align"
-                            onChange={this.handleChange}
-                            value={this.state.activity}/>
-                            <label for="activity">What did you do today?</label>
-                    </div>
+            <
+            div className = "input-field col s6" >
+            <
+            input id = "activitywant"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.activitywant
+            }
+            /> <
+            label
+            for = "activitywant" > What did you want to do today ? < /label> < /
+            div > <
+            /div>
 
-                    <div className="input-field col s6">
-                        <input id="activitywant" type="text" className="validate center-align"
-                            onChange={this.handleChange}
-                            value={this.state.activitywant}/>
-            <label for="activitywant">What did you want to do today?</label>
-                    </div>
-                </div>
+            <
+            div className = "row" >
+            <
+            div className = "input-field col s6" >
+            <
+            input id = "grateful"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.grateful
+            }
+            /> <
+            label
+            for = "grateful" > What are you grateful
+            for today ? < /label> < /
+            div >
 
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="grateful" type="text" className="validate center-align"
-                        onChange={this.handleChange}
-                        value={this.state.grateful}/>
-                        <label for="grateful">What are you grateful for today?</label>
-                    </div>
+            <
+            div className = "input-field col s6" >
+            <
+            input id = "date"
+            type = "text"
+            className = "validate center-align"
+            onChange = {
+                this.handleChange
+            }
+            value = {
+                this.state.date
+            }
+            /> <
+            label
+            for = "date" > What day is it ? < /label> < /
+            div > <
+            /div>
 
-                    <div className="input-field col s6">
-                        <input id="date" type="text" className="validate center-align"
-                        onChange={this.handleChange}
-                        value={this.state.date}/>
-                        <label for="date">What day is it?</label>
-                    </div>
-                </div>
 
-
-                <div className="row">
-                    <div className="input-field col">
-                        <button className="left-align btn waves-effect waves-light" type="submit" name="action">Submit
-                        <i className="material-icons right">send</i>
-                        </button>
-                    </div>
-                </div>
-               </form>
-              </div>
-             </div>
-            </div>
-           </div>
+            <
+            div className = "row" >
+            <
+            div className = "input-field col" >
+            <
+            button className = "left-align btn waves-effect waves-light"
+            type = "submit"
+            name = "action" > Submit <
+            i className = "material-icons right" > send < /i> < /
+            button >
+            <
+            a href = "#"
+            onClick = {
+                () => this.props.toggleState('recordsList', 'recordForm')
+            }
+            className = "waves-effect waves-light btn" >
+            Back to all Records < /a>< /
+            div > < /
+            div > <
+            /form> < /
+            div > <
+            /div> < /
+            div >
+            <
+            /
+            div >
         )
     }
 }

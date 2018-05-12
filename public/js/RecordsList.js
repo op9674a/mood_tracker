@@ -1,82 +1,121 @@
-class RecordsList extends React.Component{
-    constructor(props){
+class RecordsList extends React.Component {
+    constructor(props) {
         super(props)
-        this.getChartRecords= this.getChartRecords.bind(this)
+        this.getChartRecords = this.getChartRecords.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getChartRecords()
     }
 
-    getChartRecords(){
+    getChartRecords() {
         fetch('/records')
-        .then((response)=>response.json())
-        .then((data)=>{
-        makeChart(data)
-        }).catch((error)=>console.log(error))
+            .then((response) => response.json())
+            .then((data) => {
+                makeChart(data)
+            }).catch((error) => console.log(error))
     }
 
 
 
-    render(){
+    render() {
         console.log(this);
-        return(
-            <div className="cards-container">
-             {this.props.records.map((record, index) => {
-                return(
-                    <div className="row">
+        return ( <
+            div className = "cards-container" > {
+                this.props.records.map((record, index) => {
+                    return ( <
+                        div className = "row" >
+                        <
+                        div className = "card small" >
+                        <
+                        div className = "card-content" >
+                        <
+                        span className = "card-title center" > I feel...{
+                            record.mood
+                        } < /span> <
+                        div className = "row center" >
+                        <
+                        div className = "col" >
+                        <
+                        p > WHAT I ATE: {
+                            record.food
+                        } < /p> < /
+                        div > <
+                        div className = "col" >
+                        <
+                        p > WHAT I WANTED TO EAT: {
+                            record.foodwant
+                        } < /p> < /
+                        div > <
+                        /div>
 
-                            <div className="card small">
-                                <div className="card-content">
-                                    <span className="card-title center">I feel...{record.mood}</span>
-                                        <div className="row center">
-                                            <div className="col">
-                                                    <p> I ate {record.food} </p>
-                                            </div>
-                                            <div className="col">
-                                                    <p> I wanted {record.foodwant} </p>
-                                            </div>
-                                        </div>
+                        <
+                        div className = "row center" >
+                        <
+                        div className = "col" >
+                        <
+                        p > WHAT I DID: {
+                            record.activity
+                        } < /p> < /
+                        div > <
+                        div className = "col" >
+                        <
+                        p > WHAT I WANTED TO DO: {
+                            record.activitywant
+                        } < /p> < /
+                        div > <
+                        /div>
 
-                                        <div className="row center">
-                                            <div className="col">
-                                                <p> I {record.activity} </p>
-                                            </div>
-                                            <div className="col">
-                                                <p> I {record.activitywant} </p>
-                                            </div>
-                                        </div>
+                        <
+                        div className = "row center" >
+                        <
+                        div className = "col" >
+                        <
+                        p > WHAT I AM GRATEFUL FOR: {
+                            record.grateful
+                        } < /p> < /
+                        div > <
+                        div className = "col" >
+                        <
+                        p > DATE: {
+                            record.date
+                        } < /p> < /
+                        div > <
+                        /div> < /
+                        div >
 
-                                        <div className="row center">
-                                            <div className="col">
-                                                <p> I am grateful for {record.grateful} </p>
-                                            </div>
-                                            <div className="col">
-                                                <p> {record.date} </p>
-                                            </div>
-                                        </div>
-                                </div>
+                        <
+                        div className = "card-action" >
+                        <
+                        span > < a onClick = {
+                            () => {
+                                this.props.toggleState('recordsList', 'editRecord');
+                                this.props.getRecord(record)
+                            }
+                        }
+                        className = "btn-floating btn-large waves-effect waves-light btn-small teal" >
+                        <
+                        i className = "material-icons" > edit < /i></a > < /span> <
+                        span > < a onClick = {
+                            () => this.props.deleteRecord(record, index)
+                        }
+                        className = "btn-floating btn-large waves-effect waves-light btn-small teal" > < i className = "material-icons" > delete < /i>Delete</a > < /span> < /
+                        div > <
+                        /div>
 
-                                <div className="card-action">
-                                    <span><a onClick={() => {this.props.toggleState('recordsList','editRecord');
-                                    this.props.getRecord(record)}}
-                                    className="btn-floating btn-large waves-effect waves-light btn-small teal">
-                                    <i className="material-icons">edit</i></a></span>
-                                    <span><a onClick = {() => this.props.deleteRecord(record, index)} className="btn-floating btn-large waves-effect waves-light btn-small teal"><i className="material-icons">delete</i>Delete</a></span>
-                               </div>
-                            </div>
-                
-                   </div>
+                        <
+                        /div>
 
 
                     )
-                })}
-            </div>
-)
-}
+                })
+            } <
+            /div>
+        )
+    }
 }
 
-const makeChart = (data)=> {
+const makeChart = (data) => {
     console.log(data);
     //get Chart Element
     const ctx = document.getElementById("myChart");
@@ -88,26 +127,26 @@ const makeChart = (data)=> {
         let wordCount = {};
         const freqMoodArr = arr.toString().toLowerCase().split(",")
         console.log(freqMoodArr);
-        const moodNum = freqMoodArr.forEach( word => {
+        const moodNum = freqMoodArr.forEach(word => {
             // if the word doesn't exist in our object
-            if (!wordCount[word]){
+            if (!wordCount[word]) {
                 wordCount[word] = 1;
             } else {
                 wordCount[word]++;
             }
             console.log(wordCount);
         }) // closes forEach function
-    return wordCount;
-}
+        return wordCount;
+    }
 
-wordFreq(recordMoodArr)
+    wordFreq(recordMoodArr)
 
     //store count of each instance of mood
     const moodArrObj = [wordFreq(recordMoodArr)]
     console.log(moodArrObj);
     //grab count of each instance of mood
     //https://stackoverflow.com/questions/7391362/retrieving-keys-from-json-array-key-value-pair-dynamically-javascript
-    const moodVal= Object.values(moodArrObj[0])
+    const moodVal = Object.values(moodArrObj[0])
     console.log(moodVal);
     //remove duplicates from moods for chart labels
     //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
@@ -115,25 +154,26 @@ wordFreq(recordMoodArr)
     console.log(dup);
     console.log(dup.length);
 
-        myChart = new Chart(ctx, {
+    myChart = new Chart(ctx, {
         type: "bar",
         data: {
             labels: dup,
             datasets: [{
                 label: 'All Moods',
                 data: moodVal,
-                backgroundColor:["#F7AEF8", "#B388EB", "#8093F1", "#72DDF7","#DE369D", "#FFDDE2", "#1DD3B0", "#BDADEA", "#B6C2D9", "#709775", "#60E1E0", "#4C0827", "#DB7F8E"]
+                backgroundColor: ["#F7AEF8", "#B388EB", "#8093F1", "#72DDF7", "#DE369D", "#FFDDE2", "#1DD3B0", "#BDADEA", "#B6C2D9", "#709775", "#60E1E0", "#4C0827", "#DB7F8E"]
             }]
         },
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero:true
+                        beginAtZero: true
                     }
                 }]
-            },  events: ['click']
+            },
+            events: ['click']
         }
     });
     myChart.update()
-    }
+}

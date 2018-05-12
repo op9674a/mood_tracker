@@ -1,17 +1,20 @@
 class App extends React.Component {
-  render () {
+    render() {
 
-    return (
-      <div>
-        <TopNav />
-        <Records />
+        return ( <
+            div >
+            <
+            TopNav / >
+            <
+            Records / >
 
-        </div>
-    )
-  }
+            <
+            /div>
+        )
+    }
 }
 
-ReactDOM.render(
-  <App />,
-  document.querySelector('main')
+ReactDOM.render( <
+    App / > ,
+    document.querySelector('main')
 )
